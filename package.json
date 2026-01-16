@@ -1,18 +1,37 @@
 {
   "name": "eleicoesfluxo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "mock": "node mock-server.js"
   },
   "dependencies": {
-    "expo": "~54.0.30",
-    "expo-status-bar": "~3.0.9",
-    "react": "19.1.0",
-    "react-native": "0.81.5"
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/stack": "^6.4.1",
+    "@supabase/supabase-js": "^2.90.0",
+    "cpf-cnpj-validator": "^1.0.3",
+    "crypto-js": "^4.2.0",
+    "expo": "^54.0.30",
+    "expo-linear-gradient": "^15.0.8",
+    "expo-status-bar": "~1.12.0",
+    "firebase": "^12.7.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.74.0",
+    "react-native-gifted-charts": "^1.4.70",
+    "react-native-masked-text": "^1.13.0",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-screens": "^4.19.0",
+    "react-native-svg": "^15.15.1",
+    "react-native-web": "~0.19.6"
+  },
+  "resolutions": {
+    "crypto-js": "^4.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
   },
   "private": true
 }

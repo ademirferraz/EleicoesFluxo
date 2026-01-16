@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin - Cadastro de Candidatos</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; background: #f4f4f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 350px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #218838; }
+        #mensagem { margin-top: 15px; text-align: center; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Cadastrar Candidato</h2>
+    <input type="text" id="nome" placeholder="Nome Completo">
+    <input type="number" id="numero" placeholder="Número do Candidato">
+    <input type="text" id="foto" placeholder="Caminho da Foto (ex: assets/foto.jpg)">
+    <button onclick="cadastrar()">Cadastrar no Sistema</button>
+    <div id="mensagem"></div>
+</div>
+
+<script>
+    async function cadastrar() {
+        const dados = {
+            nome: document.getElementById('nome').value,
+            numero: parseInt(document.getElementById('numero').value),
+            foto: document.getElementById('foto').value
+        };
+
+        const msgDiv = document.getElementById('mensagem');
+        msgDiv.innerText = "Enviando...";
+
+        try {
+            const response = await fetch('http://localhost:5000/cadastrar_candidato', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            });
+
+            if (response.ok) {
+                msgDiv.style.color = "green";
+                msgDiv.innerText = "Candidato cadastrado com sucesso!";
+                // Limpa os campos
+                document.querySelectorAll('input').forEach(i => i.value = '');
+            } else {
+                msgDiv.style.color = "red";
+                msgDiv.innerText = "Erro ao cadastrar.";
+            }
+        } catch (erro) {
+            msgDiv.style.color = "red";
+            msgDiv.innerText = "Erro de conexão com o servidor.";
+        }
+    }
+</script>
+<div style="text-align: right;"><PRE>Como utilizar este painel:
+Inicie seu servidor: Rode o comando python app.py no terminal.
+
+Abra o arquivo: Basta dar um duplo clique no arquivo admin.html (ou arraste-o para o navegador).
+
+Atenção ao CORS: Se o navegador bloquear o envio por segurança, você precisará instalar a biblioteca flask-cors no seu Python:
+
+Rode: pip install flask-cors
+
+No app.py, adicione:
+
+Python
+
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app) # Isso libera o acesso para o seu HTML<\PRE></div>
+</body>
+</html>

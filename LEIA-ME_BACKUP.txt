@@ -1,0 +1,15 @@
+URLs de referência do projeto
+
+Fotos (assets):
+- Base: http://192.168.1.102:5000/
+- Exemplo: http://192.168.1.102:5000/assets/10.png
+
+API Backend:
+- Base: http://192.168.1.102:5000
+- Exemplos:
+  - GET /candidatos → http://192.168.1.102:5000/candidatos
+  - POST /votar → http://192.168.1.102:5000/votar
+  - POST /cadastrar_candidato → http://192.168.1.102:5000/cadastrar_candidato
+
+Observação:
+- O Frontend deve usar o IP 192.168.1.102 para carregar imagens em dispositivos na mesma rede (PC e iPhone).
