@@ -14,6 +14,7 @@ O projeto é dividido em três camadas principais:
 1. **Backend (Python/Flask):** Responsável pela API REST, gerenciamento de ativos (fotos dos candidatos) e integração com o banco de dados SQLite.
 2. **Motor Estatístico (Reset Script):** Um módulo de preparação de dados que garante a integridade da amostra inicial e a limpeza de ruídos para cada ciclo de simulação.
 3. **Frontend (React Native/Expo):** Dashboard mobile que consome os dados em tempo real, gerando gráficos de barras e tabelas de apuração.
+ 
 
 ## 🚀 Tecnologias Utilizadas
 * **Linguagem:** Python 3.x
@@ -35,4 +36,4 @@ Para fins de validação da persistência, o sistema inicia com a seguinte distr
 
 1. **Configurar o Banco de Dados:**
    ```bash
-   python reset_total.py
+   python reset_total.py responsável por resetar um banco SQLite, realizar o seed de dos 6 candidatos e gerar uma amostra aleatória de 100 votos (baseada em modelos de regressão temporal). Após refatoração do mapeamento de assets, o script executa sem erros no terminal, mas os dados não são persistidos no banco eleicoes.db, resultando em um JSON vazio [] no endpoint da API. 
