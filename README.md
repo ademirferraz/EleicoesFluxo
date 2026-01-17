@@ -24,12 +24,12 @@ O projeto é dividido em três camadas principais:
 
 ## 📊 Estrutura da Amostra Inicial
 Para fins de validação da persistência, o sistema inicia com a seguinte distribuição de votos:
-* **Daniel Godoy (30):** 35%
-* **Capitão Boanerges (10):** 15%
-* **Judite Alapenha (50):** 14%
-* **Coronel Alexandre Bilica (20):** 14%
-* **Washington Azevedo (40):** 12%
-* **Givaldo do Sindicato (60):** 10%
+* **Candidato A (11):** 35%
+* **candidato B (12):** 15%
+* **candidato C (13):** 14%
+* **Candidato D (14):** 14%
+* **Candidato E (15):** 12%
+* **Candidato F (10):** 10%
 
 ## 🛠️ Como Executar a Simulação
 
