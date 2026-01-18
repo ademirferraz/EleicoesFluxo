@@ -6,11 +6,12 @@ import Disclaimer from '../src/components/Disclaimer';
 // mover enviarVoto para dentro do arquivo
 const API_URL = BASE_URL;
 const candidateImages = {
-  10: require('../assets/10.png'),
-  11: require('../assets/11.png'),
-  12: require('../assets/12.png'),
-  13: require('../assets/13.png'),
-  14: require('../assets/14.png'),
+  10: require('../assets/11.png'),
+  30: require('../assets/10.png'),
+  50: require('../assets/12.png'),
+  40: require('../assets/14.png'),
+  20: require('../assets/13.png'),
+  60: require('../assets/15.png'),
 };
 const getCandidateImage = (num) => candidateImages[num] || null;
 const getCandidateImageUri = (candidate) => {
@@ -71,7 +72,7 @@ const VotacaoScreen = ({ route, navigation }) => {
         setCandidates([]);
         return;
       }
-      let listaFinal = lista.slice(0,5);
+      let listaFinal = lista;
       const alvo = listaFinal.find(c => /josinalvo|josivaldo/i.test(String(c.nome)));
       if (alvo && String(alvo.nome) !== 'Washington Azevedo') {
         try {
@@ -80,7 +81,7 @@ const VotacaoScreen = ({ route, navigation }) => {
             body: JSON.stringify({ id: alvo.id, nome: 'Washington Azevedo' })
           });
           listaFinal = listaFinal.map(c => c.id === alvo.id ? { ...c, nome: 'Washington Azevedo' } : c);
-        } catch (e) {}
+        } catch (e) { }
       }
       setCandidates(listaFinal);
     } catch (e) {
@@ -158,7 +159,7 @@ const VotacaoScreen = ({ route, navigation }) => {
             placeholder="Ex: 10"
             maxLength={2}
           />
-          
+
           <View style={styles.urnaButtons}>
             <TouchableOpacity style={[styles.urnaButton, styles.corrige]} onPress={() => { setTypedNumber(''); setSelectedCandidate(null); setPreviewCandidate(null); }}>
               <Text style={styles.urnaButtonText}>CORRIGE</Text>
@@ -172,7 +173,7 @@ const VotacaoScreen = ({ route, navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        
+
         <TouchableOpacity style={[styles.button, styles.resultButton]} onPress={() => navigation.navigate('Resultados')}>
           <Text style={styles.resultButtonText}>Ver Resultados</Text>
         </TouchableOpacity>
@@ -196,15 +197,15 @@ const styles = StyleSheet.create({
   resultButton: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#003366' },
   buttonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
   resultButtonText: { color: '#003366', fontSize: 18, fontWeight: 'bold' }
-  ,numberInput: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 8, fontSize: 16 }
-  ,previewBox: { flexDirection: 'row', alignItems: 'center', marginTop: 12, padding: 12, borderWidth: 1, borderColor: '#ddd', borderRadius: 8 }
-  ,previewAvatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#003366', alignItems: 'center', justifyContent: 'center' }
-  ,avatarImg: { width: 28, height: 28, borderRadius: 14, marginRight: 8 }
-  ,urnaButtons: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }
-  ,urnaButton: { flex: 1, padding: 12, marginHorizontal: 6, borderRadius: 8, alignItems: 'center' }
-  ,corrige: { backgroundColor: '#ff8c00' }
-  ,confirma: { backgroundColor: '#28a745' }
-  ,urnaButtonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' }
+  , numberInput: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 8, fontSize: 16 }
+  , previewBox: { flexDirection: 'row', alignItems: 'center', marginTop: 12, padding: 12, borderWidth: 1, borderColor: '#ddd', borderRadius: 8 }
+  , previewAvatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#003366', alignItems: 'center', justifyContent: 'center' }
+  , avatarImg: { width: 28, height: 28, borderRadius: 14, marginRight: 8 }
+  , urnaButtons: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }
+  , urnaButton: { flex: 1, padding: 12, marginHorizontal: 6, borderRadius: 8, alignItems: 'center' }
+  , corrige: { backgroundColor: '#ff8c00' }
+  , confirma: { backgroundColor: '#28a745' }
+  , urnaButtonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' }
 });
 
 export default VotacaoScreen;
